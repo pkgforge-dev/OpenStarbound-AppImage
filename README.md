@@ -58,13 +58,15 @@ Another motivation is that I think this makes it easier for people to install an
     - OpenStarbound assets are located in these 2 folders after extracting tar files to `${PWD}`:
       - `./OpenStarbound-Linux-Clang-Server/server/server_distribution/*`
       - `./OpenStarbound-Linux-Clang-Client/client/client_distribution/*`
-7. Run the building script depending if you want to build OpenStarbound or vanilla Starbound AppImage
+7. Set executable permission to the build script
+  - `chmod +x ./build-locally.sh`
+8. Run the building script depending if you want to build OpenStarbound or vanilla Starbound AppImage
   - OpenStarbound (version is supplied for cosmetic purposes for the filename of the AppImage - defaults to 0.0.0 if not supplied):
     - `OPENSTARBOUND_VERSION=0.1.14 ./build-locally.sh`
   - Vanilla Starbound (version is supplied for cosmetic purposes for the filename of the AppImage - defaults to 1.4.4 if not supplied):
     - `STARBOUND_VERSION=1.4.3 OPENSTARBOUND=0 ./build-locally.sh`
-8. Building will begin. When it finishes, AppImage will be located in `./dist` folder
-9. Enjoy!
+9. Building will begin. When it finishes, AppImage will be located in `./dist` folder
+10. Enjoy!
 
 **Tested:**  
   - OpenStarbound 0.1.14
