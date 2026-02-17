@@ -18,9 +18,6 @@ Guide on how to build the portable OpenStarbound AppImage working on any Linux d
 > This repo only hosts the build files and instructions on how to build OpenStarbound and vanilla Starbound.  
 > Due to obvious legal reasons, we don't release AppImages directly and you need to provide legally acquired vanilla Starbound (from GOG) and OpenStarbound assets manually.
 
-
-
-
 ## Motivation
 
 Linux game installers provided by GOG are not something that I find as well done.  
