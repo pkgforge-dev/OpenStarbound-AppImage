@@ -80,7 +80,7 @@ Another motivation is that I think this makes it easier for people to install an
   - `${XDG_DATA_HOME}/starbound/logs/`
 - The above changes are applied and are overwritten to `sbinit.conf` on every app launch, as that's necessary for portable functionality to work. That means that this config is not for user modification.
   - `${XDG_CONFIG_HOME}/starbound/sbinit.config`
-- For the portable config above, you can make portable AppImage folders `AppImage-Filename.share` and `AppImage-Filename.config` next to the AppImage.
+- For the portable config and data above, you can make portable AppImage folders `AppImage-Filename.share` and `AppImage-Filename.config` next to the AppImage.
 
 ---
 
