@@ -14,8 +14,12 @@
 
 Guide on how to build the portable OpenStarbound AppImage working on any Linux distro (with option to build vanilla Starbound too).
 
-This repo only hosts the build files and instructions on how to build OpenStarbound and vanilla Starbound.  
-Due to obvious legal reasons, we don't release AppImages directly and you need to provide legally acquired vanilla Starbound (from GOG) and OpenStarbound assets manually.
+> [!IMPORTANT]  
+> This repo only hosts the build files and instructions on how to build OpenStarbound and vanilla Starbound.  
+> Due to obvious legal reasons, we don't release AppImages directly and you need to provide legally acquired vanilla Starbound (from GOG) and OpenStarbound assets manually.
+
+
+
 
 ## Motivation
 
@@ -28,10 +32,10 @@ Another motivation is that I think this makes it easier for people to install an
 
 ## Building
 
-Requirements:  
+**Requirements:**  
   - `x86_64` PC where building will occur
     - for example, cross-building `x86_64` AppImage from `aarch64` PC is not supported
-  - Vanilla Starbound game assets from GOG installer
+  - Linux version of Vanilla Starbound game assets from GOG installer
     - Steam version might also work, but it's not tested
   - `podman` or `docker` installed in PATH
     - for pulling the Arch container needed to build the AppImage
@@ -40,7 +44,7 @@ Requirements:
   - `awk` installed in PATH
     - for parsing the Anylinux container AppImage setup action script
 
-Building steps:  
+**Building steps:**  
 1. Open terminal
 2. Change working directory where you want to save repo files (we'll use `~/Downloads` in this guide)
   - `cd ~/Downloads`
@@ -65,7 +69,7 @@ Building steps:
 8. Building will begin. When it finishes, AppImage will be located in `./dist` folder
 9. Enjoy!
 
-Tested:  
+**Tested:**  
   - OpenStarbound 0.1.14
   - Starbound 1.4.4
 
@@ -77,3 +81,7 @@ Tested:
   - `${XDG_DATA_HOME}/starbound/logs/`
 - The above changes are applied and are overwritten to `sbinit.conf` on every app launch, as that's necessary for portable functionality to work. That means that this config is not for user modification.
   - `${XDG_CONFIG_HOME}/starbound/sbinit.config`
+
+---
+
+More at: [AnyLinux-AppImages](https://pkgforge-dev.github.io/Anylinux-AppImages/)
