@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$BIN" = "starbound" ]; then
+	BIN="Starbound"
+elif [ "$BIN" = "starbound_server" ]; then
+	BIN="StarboundServer"
+fi
