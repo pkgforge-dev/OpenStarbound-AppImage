@@ -81,6 +81,10 @@ Another motivation is that I think this makes it easier for people to install an
 - The above changes are applied and are overwritten to `sbinit.conf` on every app launch, as that's necessary for portable functionality to work. That means that this config is not for user modification.
   - `${XDG_CONFIG_HOME}/starbound/sbinit.config`
 - For the portable config and data above, you can make portable AppImage folders `AppImage-Filename.share` and `AppImage-Filename.config` next to the AppImage.
+- To launch the server, you have 2 options:
+  - Pass `starbound_server` as the 1st argument - `path/to/AppImage starbound_server`
+  - Rename/symlink AppImage to `starbound_server` and launch it normally - `starbound_server`
+  - Server binary won't launch terminal itself like the original one did with a hacky and buggy script, you launch it from the terminal yourself
 
 ---
 

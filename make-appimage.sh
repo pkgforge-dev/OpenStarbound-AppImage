@@ -17,7 +17,7 @@ export ICON=starbound.png
 export DEPLOY_OPENGL=1
 export DEPLOY_SDL=1
 export DEPLOY_PIPEWIRE=1
-export MAIN_BIN=Starbound
+export MAIN_BIN=starbound
 export STARTUPWMCLASS=starbound
 
 # Deploy dependencies
