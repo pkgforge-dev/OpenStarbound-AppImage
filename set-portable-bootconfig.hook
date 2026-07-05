@@ -1,3 +1,9 @@
 #!/bin/sh
 
-set -- -bootconfig "${XDG_CONFIG_HOME:-$HOME/.config}/starbound/sbinit.config" "$@"
+if [ -f "$APPDIR"/bin/"${ARG0##*/}" = "$MAIN_BIN" ]; then
+        set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
+elif [ "$1" = "$MAIN_BIN" ]; then
+    if [ -f "$APPDIR"/bin/"$1" ]; then
+        set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
+    fi
+fi

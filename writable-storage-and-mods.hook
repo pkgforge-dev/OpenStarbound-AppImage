@@ -1,12 +1,12 @@
 #!/bin/sh
 
-mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/starbound" "${XDG_CONFIG_HOME:-$HOME/.config}/starbound"
+mkdir -p "${DATADIR}/starbound" "${CONFIGDIR}/starbound"
 echo "{
   \"assetDirectories\" : [
     \"./assets/\",
-    \"${XDG_DATA_HOME:-$HOME/.local/share}/starbound/mods/\"
+    \"${DATADIR}/starbound/mods/\"
   ],
 
-  \"storageDirectory\" : \"${XDG_DATA_HOME:-$HOME/.local/share}/starbound/storage/\",
-  \"logDirectory\" : \"${XDG_DATA_HOME:-$HOME/.local/share}/starbound/logs/\"
-}" > "${XDG_CONFIG_HOME:-$HOME/.config}/starbound/sbinit.config"
+  \"storageDirectory\" : \"${DATADIR}/starbound/storage/\",
+  \"logDirectory\" : \"${DATADIR}/starbound/logs/\"
+}" > "${CONFIGDIR}/starbound/sbinit.config"

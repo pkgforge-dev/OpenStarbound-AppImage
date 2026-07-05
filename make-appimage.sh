@@ -24,8 +24,18 @@ export STARTUPWMCLASS=starbound
 quick-sharun ./AppDir/bin/starbound* \
              /usr/bin/zenity
 
-# Remove Starbound's default sbinit.config and set working directory to reflect custom sbinit config
-rm -v ./AppDir/bin/sbinit.config
+# Set Starbound's default sbinit.config for server too in root dir, as server does not accept arguments at all for some reason
+cat << 'EOF' > ./AppDir/bin/sbinit.config
+{
+  "assetDirectories" : [
+    "./assets/",
+    "${XDG_DATA_HOME:-$HOME/.local/share}/starbound/mods/"
+  ],
+
+  "storageDirectory" : "${XDG_DATA_HOME:-$HOME/.local/share}/starbound/storage/",
+  "logDirectory" : "${XDG_DATA_HOME:-$HOME/.local/share}/starbound/logs/"
+}
+EOF
 echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}/bin' >> ./AppDir/.env
 
 # Turn AppDir into AppImage
