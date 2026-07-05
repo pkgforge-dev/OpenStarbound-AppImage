@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ${ARG0##*/} == "$MAIN_BIN" ]; then
+if [ ${ARG0##*/} = "$MAIN_BIN" ]; then
     if [ -f "$APPDIR"/bin/"${ARG0##*/}" ]; then
         set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
     fi
