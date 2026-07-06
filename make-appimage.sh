@@ -21,7 +21,7 @@ export MAIN_BIN=starbound
 export STARTUPWMCLASS=starbound
 
 # Deploy dependencies
-quick-sharun ./AppDir/bin/starbound* \
+quick-sharun ./AppDir/bin/* \
              /usr/bin/zenity
 
 # Set Starbound's default sbinit.config for server too in root dir, as server does not accept arguments at all for some reason
