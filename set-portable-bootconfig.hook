@@ -1,10 +1,19 @@
 #!/bin/sh
 
-if [ ${ARG0##*/} = "$MAIN_BIN" ]; then
-    if [ -f "$APPDIR"/bin/"${ARG0##*/}" ]; then
+# If invoked as "starbound starbound_server", redirect ARG0 to server
+# so AppRun.sh's ARG0-first check finds the right binary
+if [ "$1" = "starbound_server" ] && [ -f "$APPDIR"/bin/starbound_server ]; then
+    ARG0="$APPDIR/bin/starbound_server"
+    shift
+fi
+
+# Add -bootconfig for starbound (client) or starbound_server
+LAUNCHING="${ARG0##*/}"
+if [ "$LAUNCHING" = "$MAIN_BIN" ] || [ "$LAUNCHING" = "starbound_server" ]; then
+    if [ -f "$APPDIR"/bin/"$LAUNCHING" ]; then
         set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
     fi
-elif [ "$1" = "$MAIN_BIN" ]; then
+elif [ "$1" = "$MAIN_BIN" ] || [ "$1" = "starbound_server" ]; then
     if [ -f "$APPDIR"/bin/"$1" ]; then
         set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
     fi
