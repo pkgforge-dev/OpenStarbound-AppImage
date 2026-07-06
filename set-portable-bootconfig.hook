@@ -1,20 +1,28 @@
 #!/bin/sh
 
-# If invoked as "starbound starbound_server", redirect ARG0 to server
-# so AppRun.sh's ARG0-first check finds the right binary
-if [ "$1" = "starbound_server" ] && [ -f "$APPDIR"/bin/starbound_server ]; then
-    ARG0="$APPDIR/bin/starbound_server"
-    shift
+# If $1 names a known binary in the AppDir, redirect ARG0 so
+# AppRun.sh's ARG0-first check finds the right binary, then shift it out
+case "$1" in
+    "$MAIN_BIN"|"starbound_server")
+        if [ -f "$APPDIR"/bin/"$1" ]; then
+            ARG0="$APPDIR/bin/$1"
+            shift
+        fi
+        ;;
+esac
+
+# Add -bootconfig for known binaries, or for the fallback (unknown name -> $MAIN_BIN)
+LAUNCHING="${ARG0##*/}"
+NEEDS_BOOTCONFIG=
+if [ "$LAUNCHING" = "$MAIN_BIN" ] || [ "$LAUNCHING" = "starbound_server" ]; then
+    NEEDS_BOOTCONFIG=1
+elif [ "$1" = "$MAIN_BIN" ] || [ "$1" = "starbound_server" ]; then
+    NEEDS_BOOTCONFIG=1
+elif [ ! -f "$APPDIR/bin/${ARG0##*/}" ] && [ ! -f "$APPDIR/bin/$1" ]; then
+    # Neither ARG0 nor $1 match a binary -> AppRun.sh falls back to $MAIN_BIN
+    NEEDS_BOOTCONFIG=1
 fi
 
-# Add -bootconfig for starbound (client) or starbound_server
-LAUNCHING="${ARG0##*/}"
-if [ "$LAUNCHING" = "$MAIN_BIN" ] || [ "$LAUNCHING" = "starbound_server" ]; then
-    if [ -f "$APPDIR"/bin/"$LAUNCHING" ]; then
-        set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
-    fi
-elif [ "$1" = "$MAIN_BIN" ] || [ "$1" = "starbound_server" ]; then
-    if [ -f "$APPDIR"/bin/"$1" ]; then
-        set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
-    fi
+if [ -n "$NEEDS_BOOTCONFIG" ]; then
+    set -- -bootconfig "${CONFIGDIR}/starbound/sbinit.config" "$@"
 fi
