@@ -1,12 +1,23 @@
 #!/bin/sh
 
 mkdir -p "${DATADIR}/starbound" "${CONFIGDIR}/starbound"
+
+# Client config (used via -bootconfig, working dir is $APPDIR/bin so ./assets/ resolves there)
 echo "{
   \"assetDirectories\" : [
     \"./assets/\",
     \"${DATADIR}/starbound/mods/\"
   ],
+  \"storageDirectory\" : \"${DATADIR}/starbound/storage/\",
+  \"logDirectory\" : \"${DATADIR}/starbound/logs/\"
+}" > "${CONFIGDIR}/starbound/sbinit.config"
 
+# Server config
+echo "{
+  \"assetDirectories\" : [
+    \"./assets/\",
+    \"${DATADIR}/starbound/mods/\"
+  ],
   \"storageDirectory\" : \"${DATADIR}/starbound/storage/\",
   \"logDirectory\" : \"${DATADIR}/starbound/logs/\"
 }" > "${CONFIGDIR}/starbound/sbinit.config"
